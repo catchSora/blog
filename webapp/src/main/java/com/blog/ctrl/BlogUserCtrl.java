@@ -1,6 +1,6 @@
 package com.blog.ctrl;
 
-import blog.UserService;
+import com.blog.service.UserService;
 import com.blog.dao.BlogUserDao;
 import com.blog.entity.BlogUser;
 import com.github.pagehelper.PageHelper;

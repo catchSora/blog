@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
 
-@ComponentScan("com.blog")
+@ComponentScan(basePackages = {"com.blog", "com.blog.service.impl", "com.blog.service"})
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.**.dao")
 @EnableTransactionManagement

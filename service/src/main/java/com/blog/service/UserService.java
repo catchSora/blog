@@ -1,4 +1,4 @@
-package blog;
+package com.blog.service;
 
 import com.blog.entity.BlogUser;
 

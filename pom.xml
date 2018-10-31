@@ -12,15 +12,16 @@
         <module>entity</module>
         <module>webapp</module>
         <module>dao</module>
+        <module>service</module>
         <module>generator</module>
     </modules>
-    <name>blog Webapp</name>
+    <name>blog</name>
     <properties>
         <!--当前版本,and upgrade plugins-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.com.blog.config.location>checkstyle_checks.xml</checkstyle.com.blog.config.location>
+        <checkstyle.blog.config.location>checkstyle_checks.xml</checkstyle.blog.config.location>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
         <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
@@ -162,7 +163,7 @@
                             <id>validate</id>
                             <phase>validate</phase>
                             <configuration>
-                                <configLocation>${checkstyle.com.blog.config.location}</configLocation>
+                                <configLocation>${checkstyle.blog.config.location}</configLocation>
                                 <encoding>UTF-8</encoding>
                                 <consoleOutput>true</consoleOutput>
                                 <failsOnError>true</failsOnError>
@@ -228,7 +229,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${maven-checkstyle-plugin.version}</version>
                 <configuration>
-                    <configLocation>${checkstyle.com.blog.config.location}</configLocation>
+                    <configLocation>${checkstyle.blog.config.location}</configLocation>
                 </configuration>
             </plugin>
             <!-- findbugs-maven-plugin reporting com.blog.config-->
