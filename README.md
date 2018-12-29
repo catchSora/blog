@@ -1,2 +1,2 @@
-# blog
+# com.blog
 this is a springboot demo project

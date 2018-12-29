@@ -24,7 +24,7 @@
         <!--mapper接口-->
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
             <property name="targetProject" value="./dao/src/main/java"/>
-            <property name="targetPackage" value="com.blog.dao"/>
+            <property name="targetPackage" value="com.com.blog.dao"/>
             <property name="templatePath" value="generator/mapper.ftl"/>
             <property name="mapperSuffix" value="Dao"/>
             <property name="fileName" value="${tableClass.shortClassName}${mapperSuffix}.java"/>
@@ -32,16 +32,16 @@
         <!--mapper.xml-->
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
             <property name="targetProject" value="./dao/src/main/resources"/>
-            <property name="targetPackage" value="com.blog.mappers"/>
-            <property name="mapperPackage" value="com.blog.dao"/>
+            <property name="targetPackage" value="com.com.blog.mappers"/>
+            <property name="mapperPackage" value="com.com.blog.dao"/>
             <property name="templatePath" value="generator/mapperXml.ftl"/>
             <property name="mapperSuffix" value="Dao"/>
             <property name="fileName" value="${tableClass.shortClassName}${mapperSuffix}.xml"/>
         </plugin>
         <!--测试输出单个文件，每个表都会生成一个对应的文件-->
         <!--<plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">-->
-            <!--<property name="targetProject" value="D:/blog/entity/src/main/java"/>-->
-            <!--<property name="targetPackage" value="com.blog.entity"/>-->
+            <!--<property name="targetProject" value="D:/com.blog/entity/src/main/java"/>-->
+            <!--<property name="targetPackage" value="com.com.blog.entity"/>-->
             <!--<property name="templatePath" value="generator/one-file.ftl"/>-->
             <!--<property name="fileName" value="${tableClass.shortClassName}Test.txt"/>-->
             <!--&lt;!&ndash;默认值是下面这个，可以不配置&ndash;&gt;-->
@@ -61,12 +61,12 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/blog"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/com.blog"
                         userId="root"
                         password="root">
         </jdbcConnection>
         <!--MyBatis 生成器只需要生成 Model-->
-        <javaModelGenerator targetPackage="com.blog.entity" targetProject="./entity/src/main/java"/>
+        <javaModelGenerator targetPackage="com.com.blog.entity" targetProject="./entity/src/main/java"/>
 
         <table tableName="blog_user">
             <generatedKey column="id" sqlStatement="JDBC"/>

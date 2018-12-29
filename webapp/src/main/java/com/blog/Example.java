@@ -1,8 +1,8 @@
-//package com.blog;
+//package com.com.blog;
 //
-//import com.blog.service.UserService;
-//import com.blog.dao.BlogUserDao;
-//import com.blog.entity.BlogUser;
+//import com.com.blog.service.UserService;
+//import com.com.blog.dao.BlogUserDao;
+//import com.com.blog.entity.BlogUser;
 //import com.github.pagehelper.PageHelper;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.SpringApplication;
@@ -16,7 +16,7 @@
 //import java.util.List;
 //
 //@RestController
-//@ComponentScan(basePackages = {"com.blog", "com.blog.service"})
+//@ComponentScan(basePackages = {"com.com.blog", "com.com.blog.service"})
 //@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 //@MapperScan("com.**.dao")
 //public class Example {

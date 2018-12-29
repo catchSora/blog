@@ -1,3 +1,15 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
 spring:
   datasource:
     url: jdbc:mysql://192.168.239.135:3306/com.blog
@@ -26,16 +38,9 @@ mybatis:
 mapper:
   mappers:
   - tk.mybatis.mapper.common.Mapper
-#  - tk.mybatis.mapper.common.Mapper2
+  #  - tk.mybatis.mapper.common.Mapper2
   notEmpty: true
   configuration:
     map-underscore-to-camel-case: true
     default-fetch-size: 100
     default-statement-timeout: 30
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    register-with-eureka: false
-    fetch-registry: false

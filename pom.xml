@@ -4,29 +4,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>blog</groupId>
-    <artifactId>blog</artifactId>
+    <groupId>com.blog</groupId>
+    <artifactId>com.blog</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>entity</module>
         <module>webapp</module>
         <module>dao</module>
-        <module>service</module>
+        <module>user-service</module>
+        <module>blog-service</module>
         <module>generator</module>
     </modules>
-    <name>blog</name>
+    <name>com.blog</name>
     <properties>
         <!--当前版本,and upgrade plugins-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.blog.config.location>checkstyle_checks.xml</checkstyle.blog.config.location>
+        <checkstyle.com.blog.config.location>checkstyle_checks.xml</checkstyle.com.blog.config.location>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
         <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <servlet.version>3.1.0</servlet.version>
-        <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
+        <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+        <spring.cloud.version>2.0.2.RELEASE</spring.cloud.version>
         <mysql.connector.version>8.0.12</mysql.connector.version>
         <druid.version>1.1.10</druid.version>
         <tk.mybatis.version>2.0.4</tk.mybatis.version>
@@ -36,6 +38,19 @@
     </properties>
 
     <dependencies>
+        <!--spring cloud-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <version>${spring.cloud.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -99,12 +114,14 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
         </dependency>
+        <!--servlet api-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -147,10 +164,16 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.0</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>blog</finalName>
+        <finalName>com.blog</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <!-- maven-checkstyle-plugin -->
@@ -163,7 +186,7 @@
                             <id>validate</id>
                             <phase>validate</phase>
                             <configuration>
-                                <configLocation>${checkstyle.blog.config.location}</configLocation>
+                                <configLocation>${checkstyle.com.blog.config.location}</configLocation>
                                 <encoding>UTF-8</encoding>
                                 <consoleOutput>true</consoleOutput>
                                 <failsOnError>true</failsOnError>
@@ -201,8 +224,6 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.1</version>
                     <configuration>
-                        <!--maven setting file -->
-                        <executable>${JAVA8_HOME}/bin/javac</executable>
                         <encoding>${project.build.sourceEncoding}</encoding>
                         <!--                        <compilerArguments>
                                                     <bootclasspath>${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/jre/lib/jce.jar</bootclasspath>
@@ -223,16 +244,16 @@
     </build>
     <reporting>
         <plugins>
-            <!-- checkstyle reporting com.blog.config -->
+            <!-- checkstyle reporting com.com.blog.config -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${maven-checkstyle-plugin.version}</version>
                 <configuration>
-                    <configLocation>${checkstyle.blog.config.location}</configLocation>
+                    <configLocation>${checkstyle.com.blog.config.location}</configLocation>
                 </configuration>
             </plugin>
-            <!-- findbugs-maven-plugin reporting com.blog.config-->
+            <!-- findbugs-maven-plugin reporting com.com.blog.config-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
@@ -245,7 +266,7 @@
                     <xmlOutput>true</xmlOutput>
                 </configuration>
             </plugin>
-            <!-- findbugs-maven-plugin reporting com.blog.config-->
+            <!-- findbugs-maven-plugin reporting com.com.blog.config-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>

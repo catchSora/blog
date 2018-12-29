@@ -1,0 +1,28 @@
+package com.blog.config;
+
+import com.alibaba.druid.pool.DruidDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+
+@Configuration
+public class MybatisConfig {
+    @Autowired
+    private DataSourceProperties dataSourceProperties;
+
+
+    @Bean
+    public DataSource dataSource() {
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setUrl(dataSourceProperties.getUrl());
+        System.out.println(dataSourceProperties.getUrl());
+        dataSource.setDriverClassName(dataSourceProperties.getDriverClassName());
+        dataSource.setUsername(dataSourceProperties.getUsername());
+        dataSource.setPassword(dataSourceProperties.getPassword());
+        return dataSource;
+
+    }
+}
